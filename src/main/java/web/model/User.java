@@ -1,5 +1,9 @@
 package web.model;
 
+
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -8,8 +12,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull(message = "Нельзя использовать пустое имя")
+    @Length(min = 2, max = 30, message = "Некорректная длина имени")
     private String name;
+    @Min(value=1, message = "Возраст должен быть больше нуля")
     private int age;
+    @NotNull(message = "Email не может быть пустым")
+    @Email(message = "Введён некорректный Email")
     private String email;
 
     public User() {
