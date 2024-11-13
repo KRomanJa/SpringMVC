@@ -13,7 +13,7 @@ import web.service.UserService;
 
 @Controller
 public class UsersController {
-    private UserService userService;
+    private final UserService userService;
 
     public UsersController(UserService userService) {
         this.userService = userService;
